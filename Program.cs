@@ -45,7 +45,7 @@ namespace nohejbal_tymy
             hraci.Add("Chewie");
             hraci.Add("R2D2");
             hraci.Add("C3PO");
-            hraci.Add("Quai-Gonn");
+            //hraci.Add("Qui-Gon");
 
             Console.Write("Hráči: ");
             Console.Write(String.Join(", ", hraci));
@@ -72,7 +72,7 @@ namespace nohejbal_tymy
                 )
                 .GroupBy(x => x.tym / maxHracu)
                 .Select(g => g.Select(y => y.hrac)
-                .ToList()).ToList();
+                .ToList());
 
             Console.WriteLine("Rozdělení týmů:");
                 foreach (var t in tymy)
