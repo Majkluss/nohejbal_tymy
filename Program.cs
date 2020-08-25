@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -8,6 +9,24 @@ using System.Threading.Tasks;
 
 namespace nohejbal_tymy
 {
+
+    public static class Michacka
+    {
+        private static Random rng = new Random();
+        public static void Shuffle<T>(this IList<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -26,6 +45,8 @@ namespace nohejbal_tymy
             hraci.Add("Chewie");
             hraci.Add("R2D2");
             hraci.Add("C3PO");
+
+            Michacka.Shuffle(hraci);
 
             int pocetHracu = hraci.Count;
             int pocetTymu = pocetHracu / 3;
@@ -55,5 +76,6 @@ namespace nohejbal_tymy
             Console.ReadKey();
         }
 
+        
     }
 }
