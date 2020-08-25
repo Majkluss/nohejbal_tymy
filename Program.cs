@@ -45,6 +45,7 @@ namespace nohejbal_tymy
             hraci.Add("Chewie");
             hraci.Add("R2D2");
             hraci.Add("C3PO");
+            hraci.Add("Quai-Gonn");
 
             Console.Write("Hráči: ");
             Console.Write(String.Join(", ", hraci));
@@ -53,8 +54,14 @@ namespace nohejbal_tymy
             Michacka.Shuffle(hraci);
 
             int pocetHracu = hraci.Count;
-            int pocetTymu = pocetHracu / 3;
-            if (pocetHracu % 3 > 0)
+            int maxHracu = 3;
+            int pocetTymu = pocetHracu / maxHracu;
+            if (pocetHracu % maxHracu == 1)
+            {
+                pocetTymu += 2;
+                maxHracu = 2;
+            }
+            else if (pocetHracu % maxHracu == 2)
             {
                 pocetTymu++;
             }
@@ -63,7 +70,7 @@ namespace nohejbal_tymy
                 hraci.Select(
                     (a, b) => new { hrac = a, tym = b }
                 )
-                .GroupBy(x => x.tym / 3)
+                .GroupBy(x => x.tym / maxHracu)
                 .Select(g => g.Select(y => y.hrac)
                 .ToList()).ToList();
 
