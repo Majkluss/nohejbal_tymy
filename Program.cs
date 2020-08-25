@@ -46,6 +46,10 @@ namespace nohejbal_tymy
             hraci.Add("R2D2");
             hraci.Add("C3PO");
 
+            Console.Write("Hráči: ");
+            Console.Write(String.Join(", ", hraci));
+            Console.WriteLine("\n");
+
             Michacka.Shuffle(hraci);
 
             int pocetHracu = hraci.Count;
@@ -54,10 +58,6 @@ namespace nohejbal_tymy
             {
                 pocetTymu++;
             }
-
-            Console.Write("Hráči: ");
-            Console.Write(String.Join(", ", hraci));
-            Console.WriteLine("\n");
 
             var tymy =
                 hraci.Select(
